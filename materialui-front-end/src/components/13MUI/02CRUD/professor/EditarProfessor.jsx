@@ -19,7 +19,7 @@ const { es, al, ds, mc } = ai;
 useEffect(
   ()=>{
    
-    axios.get(`https://localhost:3001/professores/list/${id}`)
+    axios.get(`http://localhost:3001/professores/list/${id}`)
     .then(
       (response)=>{
       setNome(response.data.nome)
