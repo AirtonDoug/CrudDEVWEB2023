@@ -13,6 +13,7 @@ import EditarAluno from './aluno/EditarAluno'
 import Sobre from './sobre/Sobre'
 
 import { Container } from '@mui/material'
+import ListarAlunoAprovados from './aluno/ListarAlunosAprovados'
 export default function MainPage() {
   return (
     <div>
@@ -30,6 +31,7 @@ export default function MainPage() {
               <Route path='cadastrarAluno' element={<CadastrarAluno/>} />
               <Route path='listarAluno' element={<ListarAluno/>} />
               <Route path='editarAluno/:id' element={<EditarAluno/>} />
+              <Route path='listarAprovados' element={<ListarAlunoAprovados/>}/>
             </Routes>
           </Container>
           <Container sx={{mt:8}}>

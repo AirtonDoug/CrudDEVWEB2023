@@ -96,6 +96,16 @@ export default function MyMenu() {
           >
             Listar
           </MenuItem>
+          <MenuItem onClick={
+            ()=>{
+              handleCloseAnchorElAluno();
+            }
+            }
+            component = {Link}
+            to = {"listarAprovados"}
+          >
+            Listar Aprovados
+          </MenuItem>
         </Menu>
       </Box>
     )

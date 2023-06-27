@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Box, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
+import { Box, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow, Tooltip, Typography } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import { styled } from '@mui/material/styles'
 import { Link } from 'react-router-dom'
 import { tableCellClasses } from '@mui/material/TableCell'
 import axios from 'axios'
-
 
 
 
@@ -66,7 +65,16 @@ function deleteAlunoById(id) {
 }
 
 
+  // somar ira dos alunos e dividir pelo numero de alunos para saber a media
 
+  let contador = 0;
+  let media = 0;
+
+  for (let i = 0; i < alunos.length; i++) {
+    contador += alunos[i].ira
+  }
+
+  media = contador / alunos.length
 
   return (
     <div>
@@ -90,7 +98,10 @@ function deleteAlunoById(id) {
               alunos.map(
                 (aluno) => {
                   return (
-                    <StyledTableRow key={aluno._id}>
+                    // colorir com vermelhos os alunos abaixo da media da turma
+                    <StyledTableRow key={aluno._id}
+                      style={{backgroundColor: (aluno.ira < media) ? 'red' : null}}
+                    >
                       <StyledTableCell>{aluno._id}</StyledTableCell>
                       <StyledTableCell>{aluno.nome}</StyledTableCell>
                       <StyledTableCell>{aluno.curso}</StyledTableCell>
@@ -122,9 +133,21 @@ function deleteAlunoById(id) {
             }
           </TableBody>
         </Table>
-
       </TableContainer>
-
+      <Tooltip
+      // media da turma
+        style={
+          {
+            display: 'flex',
+            justifyContent: 'end',
+            padding: 10,
+            background: '#ccc'
+          }
+        }
+      >
+        <div style={{color: 'black', fontWeight: 700, marginRight: 10}}>media: </div>
+        <div>{media}</div>
+      </Tooltip>
     </div>
   )
 }

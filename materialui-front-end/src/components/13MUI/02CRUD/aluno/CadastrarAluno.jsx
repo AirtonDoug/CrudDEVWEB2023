@@ -84,6 +84,7 @@ const navigate = useNavigate();
             <MenuItem value="EC">Engenharia da Computação</MenuItem>
             <MenuItem value="ES">Engenharia de Software</MenuItem>
             <MenuItem value="SI">Sistemas de Informação</MenuItem>
+            <MenuItem value="RC">Redes de Computadores</MenuItem>
           </Select>
         </FormControl>
         <Box sx={{mt:2, display:"flex", justifyContent:"center"}}>

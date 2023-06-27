@@ -1,11 +1,27 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { Box, Container, TextField, Typography,Button, Link, InputAdornment, IconButton } from '@mui/material'
 import React, { useState } from 'react'
-
+import axios from 'axios';
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = ()=>{
     setShowPassword(!showPassword)
+  }
+
+  axios.get("http://localhost:3001/login")
+      .then(
+        (response)=>{
+          console.log(response)
+          
+        }
+      )
+
+  const redirecionarPagina = () => {
+    axios.post("http://localhost:3001/login")
+    .then((response)=>{
+      console.log(response);
+    }
+    )
   }
   return (
     <Container maxWidth="xs">
@@ -23,9 +39,9 @@ export default function SignIn() {
           fullWidth
           autoFocus
 
-          label="Email"
-          id='email' 
-          name='email'
+          label="Usuario"
+          id='user' 
+          name='user'
           type='email'
           
         />
@@ -51,7 +67,8 @@ export default function SignIn() {
         />
         <Button
           fullWidth
-          variant='contained'     
+          variant='contained' 
+          onClick={() => redirecionarPagina}    
         >
           SIGN IN
         </Button>
